@@ -13,7 +13,7 @@
         </form>
     </div>
 
-    <div th: each="song : ${songs}">
+    <div th:each="song : ${songs}">
         <span th:text="${song.title}"></span>
         <span th:text="${song.artist}"></span>
         <audio controls="controls">
