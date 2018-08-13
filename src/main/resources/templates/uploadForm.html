@@ -3,6 +3,11 @@
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
+
+    <p>
+        Logged in as <i th:text="${username}" />
+    </p>
+
     <div th:if="${message}">
         <h2 th:text="${message}"/>
     </div>

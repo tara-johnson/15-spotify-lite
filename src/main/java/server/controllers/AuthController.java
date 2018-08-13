@@ -28,7 +28,7 @@ public class AuthController {
             mv.addObject("error", "Sorry, that username already exists. Choose another.");
         } else {
             UserDB.createUser(username, password);
-            mv.setViewName("loggedin");
+            mv.setViewName("uploadForm");
             mv.addObject("username", username);
         }
         return mv;
@@ -49,7 +49,7 @@ public class AuthController {
         } else {
             boolean isCorrectPassword = user.checkPassword(password);
             if(isCorrectPassword) {
-                mv.setViewName("loggedin");
+                mv.setViewName("uploadForm");
                 mv.addObject("username", username);
 
                 HttpSession session = request.getSession();

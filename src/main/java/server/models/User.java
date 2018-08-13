@@ -12,21 +12,17 @@ public class User {
     public String username;
     private String passhash;
 
-//    public User(String defaultName, String defaultPass) {
-//        this(DEFAULT_NAME, DEFAULT_PASS);
-//    }
+    public User() {
+        this(DEFAULT_NAME, DEFAULT_PASS);
+    }
 
-//    public User(String username, String password) {
-//        this(username, password);
-//    }
-//
-//    public User(UserPojo user) {
-//        this(user.username, user.password);
-//    }
-//
-//    public User(String username, String password) {
-//        this(-1, username, password);
-//    }
+    public User(UserPojo user) {
+        this(user.username, user.password);
+    }
+
+    public User(String username, String password) {
+        this(-1, username, password);
+    }
 
     public User(int id, String username, String password) {
         this.id = id;
