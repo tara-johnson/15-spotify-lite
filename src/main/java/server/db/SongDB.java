@@ -9,7 +9,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class SongDB {
     public static final List<Song> songs = new ArrayList<>();
@@ -93,22 +95,33 @@ public class SongDB {
         return null;
     }
 
-    public static User getUserByName(String searchUsername) {
-        String sql = "SELECT * FROM users WHERE username='%s'";
+    public static Queue<Song> getSongByUsername(String searchUsername) {
+        String sql = "SELECT * FROM songs WHERE username='%s'";
         sql = String.format(sql, searchUsername);
 
+
         try (ResultSet results = mConn.createStatement().executeQuery(sql)) {
-            if (!results.next()) {
-                // no matching user
-                return null;
+            Queue<Song> userSongs = new LinkedList<>();
+
+
+//            if (!results.next()) {
+//                // no matching user
+//                return null;
+//            }
+
+            while (results.next()) {
+                int songid = results.getInt("songid");
+                String username = results.getString("username").trim();
+                String artist = results.getString("artist").trim();
+                String title = results.getString("title").trim();
+                String path = results.getString("path").trim();
+
+                Song song = new Song(songid, username, artist, title, path);
+                userSongs.add(song);
             }
 
-            int id = results.getInt("id");
-            String username = results.getString("username").trim();
-            String passhash = results.getString("passhash").trim();
+            return userSongs;
 
-            User user = new User(id, username, passhash);
-            return user;
         } catch (SQLException e) {
             e.printStackTrace();
         }

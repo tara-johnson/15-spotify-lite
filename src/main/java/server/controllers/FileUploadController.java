@@ -78,6 +78,7 @@ public class FileUploadController {
             SongDB.createSong(username, artist, song, filepath);
             SongDB.songs.add(mp3);
             redirectAttributes.addAttribute("song", song);
+            redirectAttributes.addAttribute("username", username);
 
         } catch (IOException e) {
             e.printStackTrace();

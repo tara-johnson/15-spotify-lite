@@ -254,3 +254,7 @@ gradle-app.setting
 
 
 # End of https://www.gitignore.io/api/java,macos,gradle,intellij,androidstudio
+
+# Ignore uploads folder
+src/main/resources/public/uploads
+src/main/resources/public/uploads/*
