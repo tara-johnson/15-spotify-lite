@@ -1,10 +1,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <link rel="stylesheet" href="/style.css" />
+        <title>Spotify Lite</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet" />
     </head>
     <body>
 
-    <p>
+    <p th:text="'Welcome, ' + ${username} + '! Time to upload your music.'">
         Logged in as <i th:text="${username}" />
     </p>
 
@@ -14,10 +16,10 @@
 
     <div>
         <form method="POST" enctype="multipart/form-data" action="/">
-            Artist: <input type="text" name="artist" />
-            Song: <input type="text" name="song" />
-            File to upload: <input type="file" name="file" />
-            <input type="submit" value="Upload" />
+            <div>Artist: <input type="text" name="artist" /></div>
+            <div>Song: <input type="text" name="song" /></div>
+            <div>File to upload: <input type="file" name="file" /></div>
+            <div><input class="button" type="submit" value="Upload" /></div>
         </form>
     </div>
 

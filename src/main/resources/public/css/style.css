@@ -1,7 +1,36 @@
 body {
-    background: goldenrod;
+    background: #E6AF2E;
+    /*background-image: url("/images/bg.jpg");*/
+    font-family: 'Montserrat', sans-serif;
 }
 
 img {
     max-width: 400px;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0px;
+}
+
+.sectionTitle {
+    font-size: 24px;
+    margin-top: 1em;
+}
+
+.button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    color: #3D348B;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #3D348B;
+    color: #ffffff;
 }

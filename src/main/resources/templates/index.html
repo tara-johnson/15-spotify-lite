@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
     <head>
         <title>Spotify Lite</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet" />
     </head>
 
     <body>
-    <h1>Want to know my secret?</h1>
-    <p>See <a href="/private/uploadForm.html">where I'll be</a> next March.</p>
+    <h1>Register to upload your music.</h1>
+    <!--<p>See <a href="/private/uploadForm.html">where I'll be</a> next March.</p>-->
 
-    <p>
-        Logged in as <i th:text="${username}" />
-    </p>
+    <!--<p>-->
+        <!--Logged in as <i th:text="${username}" />-->
+    <!--</p>-->
 
-    <h1>Login</h1>
-    <form action="/auth/login" method="POST">
-        <div>Username: <input name="username" /></div>
-        <div>Password: <input name="password" type="password" /></div>
-        <input type="submit" />
-    </form>
+    <div>
+        <div class="sectionTitle">Login</div>
+        <form action="/auth/login" method="POST">
+            <div>Username: <input name="username" /></div>
+            <div>Password: <input name="password" type="password" /></div>
+            <input class="button" type="submit" value="Login" />
+        </form>
+    </div>
 
-    <h1>Register</h1>
-    <form action="/auth/register" method="POST">
-        <div>Username: <input name="username" /></div>
-        <div>Password: <input name="password" type="password" /></div>
-        <input type="submit" />
-    </form>
 
-    <h1>Logout</h1>
-    <form action="/auth/logout" method="POST">
-        <input type="submit" />
-    </form>
+    <div>
+        <div class="sectionTitle">Register</div>
+        <form action="/auth/register" method="POST">
+            <div>Username: <input name="username" /></div>
+            <div>Password: <input name="password" type="password" /></div>
+            <input class="button" type="submit" value="Register"/>
+        </form>
+    </div>
+
+    <div>
+        <div class="sectionTitle">Logout</div>
+        <form action="/auth/logout" method="POST">
+            <input class="button" type="submit" value="Logout" />
+        </form>
+    </div>
 
     </body>
 </html>
