@@ -1,32 +1,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <link rel="stylesheet" href="/style.css" />
+        <title>SpotifyLite</title>
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700, 800" rel="stylesheet" />
     </head>
+
     <body>
-    <div th:if="${message}">
-        <h2 th:text="${message}"/>
-    </div>
+        <nav>
+            <div class="nav-left"><a href="/">SpotifyLite</a></div>
+            <div class="signin-username" th:text="'Signed in as ' + ${username}"></div>
+        </nav>
 
-    <div>
-        <form method="POST" enctype="multipart/form-data" action="/">
-            Artist: <input type="text" name="artist" />
-            Song: <input type="text" name="song" />
-            File to upload: <input type="file" name="file" />
-            <input type="submit" value="Upload" />
-        </form>
-    </div>
+        <div th:if="${message}">
+            <h2 th:text="${message}"/>
+        </div>
 
-    <div>
-        <ul>
-            <li th:each="file : ${files}">
-                <p>
-                    <a th:href="${file}" th:text="${file}" />
-                </p>
-                <p th:if="${file.endsWith('mp3')}">
-                    <img th:src="${file}" />
-                </p>
-            </li>
-        </ul>
-    </div>
+        <h1>Upload music from your computer.</h1>
+        <section class="clear">
+            <form method="POST" enctype="multipart/form-data" action="/">
+                <div>Artist<input type="text" name="artist" placeholder="Enter artist's name" /></div>
+                <div>Song<input type="text" name="song" placeholder="Enter song title" /></div>
+                <div>File to upload<input type="file" name="file" /></div>
+                <input class="button upload-button" type="submit" value="Upload" />
+            </form>
+        </section>
+
+        <section>
+            <ul>
+                <li th:each="file : ${files}">
+                    <p>
+                        <a th:href="${file}" th:text="${file}" />
+                    </p>
+                    <p th:if="${file.endsWith('mp3')}">
+                        <img th:src="${file}" />
+                    </p>
+                </li>
+            </ul>
+        </section>
     </body>
 </html>

@@ -7,12 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import server.MockDB;
-import server.Song;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,7 +18,7 @@ import java.util.stream.Stream;
 
 @Service
 public class FileSystemStorageService {
-    private final String ROOT_FILEPATH = "static/uploads";
+    private final String ROOT_FILEPATH = "public/uploads";
     private final Path rootLocation;
 
     @Autowired

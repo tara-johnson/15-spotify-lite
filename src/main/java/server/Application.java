@@ -4,7 +4,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.GetMapping;
 import server.storage.FileSystemStorageService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @SpringBootApplication
 public class Application {
@@ -14,10 +18,10 @@ public class Application {
         System.out.println("http://localhost:8080");
     }
 
-    @Bean
-    CommandLineRunner init(FileSystemStorageService storageService) {
-        return (args) -> {
-            storageService.init();
-        };
-    }
+//    @Bean
+//    CommandLineRunner init(FileSystemStorageService storageService) {
+//        return (args) -> {
+//            storageService.init();
+//        };
+//    }
 }

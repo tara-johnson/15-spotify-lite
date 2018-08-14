@@ -1,0 +1,98 @@
+body {
+    background-color: #ffcc66;
+    /*background-image: linear-gradient(to bottom, #ff9966 0%, #ff66cc 50%, #66ccff 110%);*/
+    background-image: linear-gradient(to bottom, #ff6699 0%, #ffcc66 100%);
+    background-repeat: no-repeat;
+    font-family: 'Montserrat', sans-serif;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+nav {
+    height: 50px;
+    background-color: #000;
+    opacity: .5;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 50px;
+    padding-left: 10px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.nav-left {
+    float: left;
+}
+
+.signin-username {
+    float: right;
+    font-weight: 400;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+h1 {
+    margin: 20px 0px 20px 10px;
+    font-weight: 800;
+    font-size: 2em;
+    color: #fff;
+}
+
+p {
+    margin-left: 10px;
+    color: #fff;
+}
+
+.clear {
+    clear: both;
+}
+
+section {
+    margin: 0px 0px 30px 10px;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 1em;
+}
+
+input {
+    margin-left: 10px;
+}
+
+.song-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0px 0px 5px 0px;
+}
+
+.song-artist {
+    font-size: 12px;
+}
+
+.button {
+    width: 150px;
+    background-color: #57b560;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 5px 0px 0px 0px;
+}
+
+.button:hover {
+    background-color: #65d36e;
+}

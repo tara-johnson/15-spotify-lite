@@ -1,4 +1,4 @@
-package server;
+package server.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -9,12 +9,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import server.db.MockDB;
+import server.db.SongDB;
+import server.models.Song;
 import server.storage.FileSystemStorageService;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
 @Controller
+@SessionAttributes({"username"})
 public class FileUploadController {
 
     private final FileSystemStorageService storageService;
@@ -31,7 +39,7 @@ public class FileUploadController {
                         "serveFile", path.getFileName().toString()).build().toString())
                 .collect(Collectors.toList()));
 
-        return "uploadForm";
+        return "index";
     }
 
     @GetMapping("/files/{filename:.+}")
@@ -51,21 +59,29 @@ public class FileUploadController {
             @RequestParam("artist") String artist,
             @RequestParam("song") String song,
             @RequestParam("file") MultipartFile file,
-            Model model
+            RedirectAttributes redirectAttributes,
+            Model model,
+            HttpServletRequest request
     ) {
         try {
+            HttpSession sesh = request.getSession();
+            String username = (String) sesh.getAttribute("username");
             String filepath = storageService.store(file);
-            filepath = filepath.split("static")[1];
-            System.out.println(filepath);
+            filepath = filepath.split("public")[1];
 
-            server.Song mp3 = new server.Song();
+            Song mp3 = new Song();
+            mp3.username = username;
             mp3.artist = artist;
             mp3.title = song;
             mp3.path = filepath;
 
-            server.MockDB.songs.add(mp3);
-        } catch (IOException e) {
+            SongDB.createSong(username, artist, song, filepath);
+            SongDB.songs.add(mp3);
+            redirectAttributes.addAttribute("song", song);
+            redirectAttributes.addAttribute("username", username);
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return "redirect:/songs";
     }

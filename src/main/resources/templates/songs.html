@@ -1,24 +1,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <link rel="stylesheet" href="/style.css" />
+        <title>SpotifyLite</title>
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700, 800" rel="stylesheet" />
     </head>
+
     <body>
+        <nav>
+            <div class="nav-left"><a href="/">SpotifyLite</a></div>
+            <div class="signin-username" th:text="'Signed in as ' + ${username}"></div>
+        </nav>
 
-    <div>
-        <form method="POST" enctype="multipart/form-data" action="/">
-            Artist: <input type="text" name="artist" />
-            Song: <input type="text" name="song" />
-            File to upload: <input type="file" name="file" />
-            <input type="submit" value="Upload" />
-        </form>
-    </div>
+        <h1>Upload music from your computer.</h1>
+        <section class="clear">
+            <form method="POST" enctype="multipart/form-data" action="/">
+                <div>Artist<input type="text" name="artist" placeholder="Enter artist's name" /></div>
+                <div>Song<input type="text" name="song" placeholder="Enter song title" /></div>
+                <div>File to upload<input type="file" name="file" /></div>
+                <input class="button upload-button" type="submit" value="Upload" />
+            </form>
+        </section>
 
-    <div th: each="song : ${songs}">
-        <span th:text="${song.title}"></span>
-        <span th:text="${song.artist}"></span>
-        <audio controls="controls">
-            <source th:src="${song.path}"></source>
-        </audio>
-    </div>
+        <h1>Listen.</h1>
+        <section th:each="song : ${songs}">
+            <div class="song-title" th:text="${song.title}"></div>
+            <div class="song-artist" th:text="'Performed by ' + ${song.artist}"></div>
+            <audio controls="controls">
+                <source th:src="${song.path}"></source>
+            </audio>
+        </section>
+
     </body>
 </html>
