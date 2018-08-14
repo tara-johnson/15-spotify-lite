@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Spotify Lite</title>
+        <title>SpotifyLite</title>
+        <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/style.css" />
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700, 800" rel="stylesheet" />
     </head>
 
     <body>
-    <h1>Register to upload your music.</h1>
-    <!--<p>See <a href="/private/uploadForm.html">where I'll be</a> next March.</p>-->
+
+    <nav>
+        <div>SpotifyLite</div>
+    </nav>
+
+    <h1>Sign up or sign in to upload your music.</h1>
 
     <!--<p>-->
         <!--Logged in as <i th:text="${username}" />-->
     <!--</p>-->
 
-    <div>
+    <section>
         <div class="sectionTitle">Login</div>
         <form action="/auth/login" method="POST">
-            <div>Username: <input name="username" /></div>
-            <div>Password: <input name="password" type="password" /></div>
-            <input class="button" type="submit" value="Login" />
+            <div>Username<input name="username" /></div>
+            <div>Password<input name="password" type="password" /></div>
+            <input class="button" type="submit" value="SIGN IN" />
         </form>
-    </div>
+    </section>
 
-
-    <div>
+    <section>
         <div class="sectionTitle">Register</div>
         <form action="/auth/register" method="POST">
-            <div>Username: <input name="username" /></div>
-            <div>Password: <input name="password" type="password" /></div>
-            <input class="button" type="submit" value="Register"/>
+            <div>Username<input name="username" /></div>
+            <div>Password<input name="password" type="password" /></div>
+            <input class="button" type="submit" value="SIGN UP"/>
         </form>
-    </div>
+    </section>
 
-    <div>
+    <section>
         <div class="sectionTitle">Logout</div>
         <form action="/auth/logout" method="POST">
-            <input class="button" type="submit" value="Logout" />
+            <input class="button" type="submit" value="LOGOUT" />
         </form>
-    </div>
+    </section>
 
     </body>
 </html>
